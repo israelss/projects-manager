@@ -8,3 +8,9 @@ export const create = async (req: Request, res: Response): Promise<Response> => 
   await projectService.create(username as string, project)
   return res.status(Success.CREATED).end()
 }
+
+export const get = async (req: Request, res: Response): Promise<Response> => {
+  const { id } = req.params
+  const project = await projectService.get(id)
+  return res.status(Success.OK).json(project)
+}

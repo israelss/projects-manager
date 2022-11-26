@@ -37,4 +37,8 @@ export const BadRequest = {
     code: ClientError.BAD_REQUEST,
     message: 'Username must be provided on header'
   },
+  idInvalid: {
+    code: ClientError.BAD_REQUEST,
+    message: 'Id should be a valid UUID'
+  }
 }
