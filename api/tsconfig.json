@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2021",
+    "lib": ["ES2021"],
+
+    /* Emit */
+    "outDir": "./build",
+
+    /* Modules */
+    "module": "commonjs",
+    "baseUrl": "./src",
+    "paths": {
+      "@interfaces/*": ["interfaces/*"],
+      "@models/*": ["models/*"],
+      "@services/*": ["services/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"],
+    },
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "useUnknownInCatchVariables": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  }
+}
