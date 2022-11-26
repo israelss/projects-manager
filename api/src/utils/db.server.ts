@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client'
 let db: PrismaClient
 
 declare global {
-  let _db: PrismaClient | null
+  let _db: PrismaClient | undefined
 }
 
 // this is needed because in development we don't want to restart
@@ -13,7 +13,7 @@ declare global {
 if (process.env.NODE_ENV === 'production') {
   db = new PrismaClient()
 } else {
-  if (global._db === null) {
+  if (global._db === undefined) {
     global._db = new PrismaClient()
   }
   db = global._db
