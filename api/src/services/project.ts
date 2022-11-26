@@ -54,3 +54,12 @@ export const get = async (id: string): Promise<ProjectData | null> => {
   if (project === null) return null
   return await transformCepToLocation(project)
 }
+
+export const getAll = async (username: string): Promise<ProjectData[]> => {
+  const projects = await db.project.findMany({ where: { username } })
+
+  const projectsData = await Promise.all(
+    projects.map(async (project) => await transformCepToLocation(project))
+  )
+  return projectsData
+}
