@@ -14,3 +14,9 @@ export const get = async (req: Request, res: Response): Promise<Response> => {
   const project = await projectService.get(id)
   return res.status(Success.OK).json(project)
 }
+
+export const getAll = async (req: Request, res: Response): Promise<Response> => {
+  const { username } = req.headers
+  const projects = await projectService.getAll(username as string)
+  return res.status(Success.OK).json({ projects })
+}
