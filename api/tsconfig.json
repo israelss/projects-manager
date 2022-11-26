@@ -9,14 +9,6 @@
 
     /* Modules */
     "module": "commonjs",
-    "baseUrl": "./src",
-    "paths": {
-      "@interfaces/*": ["interfaces/*"],
-      "@models/*": ["models/*"],
-      "@services/*": ["services/*"],
-      "@types/*": ["types/*"],
-      "@utils/*": ["utils/*"],
-    },
 
     /* Interop Constraints */
     "esModuleInterop": true,
