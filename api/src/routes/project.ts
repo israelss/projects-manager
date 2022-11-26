@@ -14,4 +14,10 @@ router.post(
   projectController.create as RequestHandler
 )
 
+router.get(
+  '/:id',
+  projectValidation.id,
+  projectController.get as RequestHandler
+)
+
 export default router
