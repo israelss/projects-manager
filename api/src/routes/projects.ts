@@ -10,4 +10,12 @@ router.get(
   projectController.getAll as RequestHandler
 )
 
+router.patch(
+  '/:id/done',
+  projectValidation.id,
+  projectValidation.username,
+  projectValidation.ownership as RequestHandler,
+  projectController.markAsDone as RequestHandler
+)
+
 export default router

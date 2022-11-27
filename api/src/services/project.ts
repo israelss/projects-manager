@@ -63,3 +63,10 @@ export const getAll = async (username: string): Promise<ProjectData[]> => {
   )
   return projectsData
 }
+
+export const markAsDone = async (id: string): Promise<void> => {
+  await db.project.update({
+    data: { done: true },
+    where: { id }
+  })
+}

@@ -42,3 +42,10 @@ export const BadRequest = {
     message: 'Id should be a valid UUID'
   }
 }
+
+export const Forbidden = {
+  invalidOwner: {
+    code: ClientError.FORBIDDEN,
+    message: 'You cannot do this!'
+  }
+}

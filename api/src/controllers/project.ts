@@ -20,3 +20,9 @@ export const getAll = async (req: Request, res: Response): Promise<Response> => 
   const projects = await projectService.getAll(username as string)
   return res.status(Success.OK).json({ projects })
 }
+
+export const markAsDone = async (req: Request, res: Response): Promise<Response> => {
+  const { id } = req.params
+  await projectService.markAsDone(id)
+  return res.status(Success.OK).end()
+}
