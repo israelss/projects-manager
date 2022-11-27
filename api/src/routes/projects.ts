@@ -26,4 +26,16 @@ router.delete(
   projectController.remove as RequestHandler
 )
 
+router.put(
+  '/:id',
+  projectValidation.id,
+  projectValidation.username,
+  projectValidation.cost,
+  projectValidation.deadline,
+  projectValidation.title,
+  projectValidation.zipCode,
+  projectValidation.ownership as RequestHandler,
+  projectController.update as RequestHandler
+)
+
 export default router
