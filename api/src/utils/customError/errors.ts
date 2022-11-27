@@ -49,3 +49,10 @@ export const Forbidden = {
     message: 'You cannot do this!'
   }
 }
+
+export const UnprocessableEntity = {
+  wrongCredentials: {
+    code: ClientError.UNPROCESSABLE_ENTITY,
+    message: 'Incorrect username or password'
+  }
+}
