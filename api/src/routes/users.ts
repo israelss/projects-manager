@@ -5,6 +5,13 @@ import { userValidation } from '../middlewares'
 const router = Router()
 
 router.post(
+  '/login',
+  userValidation.username,
+  userValidation.password,
+  userController.login as RequestHandler
+)
+
+router.post(
   '/',
   userValidation.username,
   userValidation.usernameUniqueness as RequestHandler,
