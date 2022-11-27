@@ -32,3 +32,10 @@ export const remove = async (req: Request, res: Response): Promise<Response> => 
   await projectService.remove(id)
   return res.status(Success.NO_CONTENT).end()
 }
+
+export const update = async (req: Request, res: Response): Promise<Response> => {
+  const projectData = req.body
+  const { id } = req.params
+  const updatedProject = await projectService.update(id, projectData)
+  return res.status(Success.OK).json(updatedProject)
+}
