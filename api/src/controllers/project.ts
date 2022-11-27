@@ -26,3 +26,9 @@ export const markAsDone = async (req: Request, res: Response): Promise<Response>
   await projectService.markAsDone(id)
   return res.status(Success.OK).end()
 }
+
+export const remove = async (req: Request, res: Response): Promise<Response> => {
+  const { id } = req.params
+  await projectService.remove(id)
+  return res.status(Success.NO_CONTENT).end()
+}
