@@ -23,8 +23,8 @@ export const getAll = async (req: Request, res: Response): Promise<Response> => 
 
 export const markAsDone = async (req: Request, res: Response): Promise<Response> => {
   const { id } = req.params
-  await projectService.markAsDone(id)
-  return res.status(Success.OK).end()
+  const updatedProject = await projectService.markAsDone(id)
+  return res.status(Success.OK).json(updatedProject)
 }
 
 export const remove = async (req: Request, res: Response): Promise<Response> => {
