@@ -6,7 +6,8 @@ const router = Router()
 
 router.post(
   '/',
-  userValidation.username as RequestHandler,
+  userValidation.username,
+  userValidation.usernameUniqueness as RequestHandler,
   userValidation.name,
   userValidation.password,
   userController.create as RequestHandler

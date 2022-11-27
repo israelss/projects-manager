@@ -9,10 +9,6 @@ export const BadRequest = {
     code: ClientError.BAD_REQUEST,
     message: 'Username must have at least 4 (four) characters'
   },
-  usernameNotUnique: {
-    code: ClientError.BAD_REQUEST,
-    message: 'Username already taken, please chose another'
-  },
   passwordInvalid: {
     code: ClientError.BAD_REQUEST,
     message: 'Password must have at least 8 (eight) characters'
@@ -54,5 +50,9 @@ export const UnprocessableEntity = {
   wrongCredentials: {
     code: ClientError.UNPROCESSABLE_ENTITY,
     message: 'Incorrect username or password'
+  },
+  usernameNotUnique: {
+    code: ClientError.UNPROCESSABLE_ENTITY,
+    message: 'Username already taken, please chose another'
   }
 }
