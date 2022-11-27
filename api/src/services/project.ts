@@ -40,8 +40,8 @@ const transformCepToLocation = async (project: Project): Promise<ProjectData> =>
   return removeZipCode(projectWithLocation)
 }
 
-export const create = async (username: string, project: NewProjectData): Promise<void> => {
-  await db.project.create({
+export const create = async (username: string, project: NewProjectData): Promise<Project> => {
+  return await db.project.create({
     data: {
       username,
       ...project
@@ -64,8 +64,8 @@ export const getAll = async (username: string): Promise<ProjectData[]> => {
   return projectsData
 }
 
-export const markAsDone = async (id: string): Promise<void> => {
-  await db.project.update({
+export const markAsDone = async (id: string): Promise<Project> => {
+  return await db.project.update({
     data: { done: true },
     where: { id }
   })
