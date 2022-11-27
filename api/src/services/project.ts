@@ -70,3 +70,9 @@ export const markAsDone = async (id: string): Promise<void> => {
     where: { id }
   })
 }
+
+export const remove = async (id: string): Promise<void> => {
+  await db.project.delete({
+    where: { id }
+  })
+}

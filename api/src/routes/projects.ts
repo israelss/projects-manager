@@ -18,4 +18,12 @@ router.patch(
   projectController.markAsDone as RequestHandler
 )
 
+router.delete(
+  '/:id',
+  projectValidation.id,
+  projectValidation.username,
+  projectValidation.ownership as RequestHandler,
+  projectController.remove as RequestHandler
+)
+
 export default router
