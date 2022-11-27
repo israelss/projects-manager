@@ -5,8 +5,8 @@ import { projectService } from '../services'
 export const create = async (req: Request, res: Response): Promise<Response> => {
   const project = req.body
   const { username } = req.headers
-  await projectService.create(username as string, project)
-  return res.status(Success.CREATED).end()
+  const createdProject = await projectService.create(username as string, project)
+  return res.status(Success.CREATED).json(createdProject)
 }
 
 export const get = async (req: Request, res: Response): Promise<Response> => {
