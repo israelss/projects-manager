@@ -4,6 +4,7 @@ import { emptyHandler } from '../../mocks/middlewares'
 import { userService } from '../../../../src/services'
 import { userValidation } from '../../../../src/middlewares'
 import { ClientError, Success } from '../../../../src/enums/http_status_codes'
+import { User } from '@prisma/client'
 
 // Any handler mock implementation must be before the import of app,
 // otherwise the handler real implementation is used instead of the mocked one
@@ -11,7 +12,6 @@ vi.spyOn(userValidation, 'username').mockImplementation(emptyHandler)
 vi.spyOn(userValidation, 'password').mockImplementation(emptyHandler)
 
 import app from '../../../../src/app' // eslint-disable-line import/first
-import { User } from '@prisma/client'
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -26,9 +26,9 @@ describe('User', () => {
     describe('login', () => {
       test('should return logged user username', async () => {
         vi.spyOn(userService, 'login')
-        .mockImplementation(async (user: Pick<User, 'username'|'password'>) => {
-          return await Promise.resolve(user.username)
-        })
+          .mockImplementation(async (user: Pick<User, 'username' | 'password'>) => {
+            return await Promise.resolve(user.username)
+          })
 
         const data = {
           username: 'user.one',
