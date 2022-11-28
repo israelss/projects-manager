@@ -1,8 +1,8 @@
-import { afterEach, describe, expect, test, vi } from 'vitest'
 import request from 'supertest'
-import { userValidation } from '../../../../src/middlewares'
+import { afterAll, afterEach, describe, expect, test, vi } from 'vitest'
 import { emptyHandler, emptyHandlerAsync } from '../../mocks/middlewares'
 import { userService } from '../../../../src/services'
+import { userValidation } from '../../../../src/middlewares'
 import { Success } from '../../../../src/enums/http_status_codes'
 import { User } from '@prisma/client'
 
@@ -16,6 +16,10 @@ vi.spyOn(userValidation, 'password').mockImplementation(emptyHandler)
 import app from '../../../../src/app' // eslint-disable-line import/first
 
 afterEach(() => {
+  vi.clearAllMocks()
+})
+
+afterAll(() => {
   vi.restoreAllMocks()
 })
 
