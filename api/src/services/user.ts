@@ -1,10 +1,7 @@
 import { User } from '@prisma/client'
 import { db } from '../utils/db.server'
 
-interface LoginInput {
-  username: string
-  password: string
-}
+interface LoginInput extends Pick<User, 'username' | 'password'> {}
 
 export const create = async (user: Omit<User, 'id'>): Promise<string> => {
   const { username } = await db.user.create({
