@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import usernameValidator from '../../../../src/middlewares/user/username'
+import usernameValidator from '../../../../src/middlewares/project/username'
 import CustomError, { BadRequest } from '../../../../src/utils/customError'
 
 afterEach(() => {
@@ -12,7 +12,7 @@ describe('User', () => {
     describe('username', () => {
       test('should pass with a valid username', () => {
         const req = {
-          body: {
+          headers: {
             username: 'user.one'
           }
         } as unknown as Request
@@ -25,7 +25,7 @@ describe('User', () => {
       })
       test('should call next with error with an invalid username', () => {
         const req = {
-          body: {
+          headers: {
             username: 'one'
           }
         } as unknown as Request
@@ -34,7 +34,7 @@ describe('User', () => {
 
         usernameValidator(req, res, next)
 
-        expect(next).toBeCalledWith(new CustomError(BadRequest.usernameInvalid))
+        expect(next).toBeCalledWith(new CustomError(BadRequest.headerInvalid))
       })
     })
   })
