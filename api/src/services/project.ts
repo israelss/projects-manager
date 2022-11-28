@@ -41,8 +41,8 @@ export const remove = async (id: string): Promise<void> => {
   })
 }
 
-export const update = async (id: string, data: NewProjectData): Promise<void> => {
-  await db.project.update({
+export const update = async (id: string, data: NewProjectData): Promise<Project> => {
+  return await db.project.update({
     data,
     where: { id }
   })
