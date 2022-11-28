@@ -15,8 +15,8 @@ describe('User', () => {
           body: {
             password: '12345678'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         passwordValidator(req, res, next)
@@ -28,8 +28,8 @@ describe('User', () => {
           body: {
             password: '1'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         passwordValidator(req, res, next)

@@ -18,8 +18,8 @@ describe('User', () => {
           body: {
             username: 'user.two'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         await usernameUniquenessValidator(req, res, next)
@@ -32,8 +32,8 @@ describe('User', () => {
           body: {
             username: 'user.one'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         await usernameUniquenessValidator(req, res, next)

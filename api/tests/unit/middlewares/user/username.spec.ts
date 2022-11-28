@@ -15,8 +15,8 @@ describe('User', () => {
           body: {
             username: 'user.one'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         usernameValidator(req, res, next)
@@ -28,8 +28,8 @@ describe('User', () => {
           body: {
             username: 'one'
           }
-        } as Request
-        const res = {} as Response
+        } as unknown as Request
+        const res = {} as unknown as Response
         const next = vi.fn()
 
         usernameValidator(req, res, next)
