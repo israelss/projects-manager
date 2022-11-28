@@ -10,7 +10,7 @@ vi.spyOn(userController, 'login').mockImplementation(emptyHandlerAsync)
 vi.spyOn(userValidation, 'username').mockImplementation(emptyHandler)
 vi.spyOn(userValidation, 'password').mockImplementation(emptyHandler)
 
-import app from '../../../src/app'
+import app from '../../../src/app' // eslint-disable-line import/first
 
 afterEach(() => {
   vi.restoreAllMocks()

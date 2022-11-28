@@ -13,7 +13,7 @@ vi.spyOn(userValidation, 'username').mockImplementation(emptyHandler)
 vi.spyOn(userValidation, 'name').mockImplementation(emptyHandler)
 vi.spyOn(userValidation, 'password').mockImplementation(emptyHandler)
 
-import app from '../../../../src/app'
+import app from '../../../../src/app' // eslint-disable-line import/first
 
 afterEach(() => {
   vi.restoreAllMocks()
@@ -25,7 +25,7 @@ describe('User', () => {
       test('should return new user username', async () => {
         vi.spyOn(userService, 'create')
           .mockImplementation(async (user: Omit<User, 'id'>) => {
-            return Promise.resolve(user.username)
+            return await Promise.resolve(user.username)
           })
 
         const data = {
