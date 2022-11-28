@@ -24,7 +24,7 @@ afterAll(() => {
 
 describe('Project', () => {
   describe('Controller', () => {
-    describe('get', () => {
+    describe('markAsDone', () => {
       test('should return project', async () => {
         vi.spyOn(projectService, 'markAsDone')
           .mockResolvedValue(projectDone)
