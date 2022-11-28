@@ -19,6 +19,18 @@ export const projectCreatedWithValidZipCode = {
   updated_at: new Date('2022-11-27T00:00:00.000Z')
 }
 
+export const projectDone = {
+  id: '3a2b1c',
+  title: 'Nome do projeto',
+  zip_code: 26700000,
+  cost: 1000,
+  done: true,
+  deadline: new Date('2022-11-30T00:00:00.000Z'),
+  username: 'user.one',
+  created_at: new Date('2022-11-27T00:00:00.000Z'),
+  updated_at: new Date('2022-11-27T00:00:00.000Z')
+}
+
 const projectCreatedWithInvalidZipCode = {
   id: '4z3a2b',
   title: 'Nome do projeto 2',
