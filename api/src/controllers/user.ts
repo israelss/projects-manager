@@ -3,7 +3,7 @@ import { Success } from '../enums/http_status_codes'
 import { userService } from '../services'
 import CustomError, { UnprocessableEntity } from '../utils/customError'
 
-export const create = async (req: Request, res: Response): Promise<void> => {
+export const create = async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
   const user = req.body
   const username = await userService.create(user)
   res.status(Success.CREATED).json({ username })
