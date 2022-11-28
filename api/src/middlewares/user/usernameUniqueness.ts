@@ -2,7 +2,7 @@ import CustomError, { UnprocessableEntity } from '../../utils/customError'
 import { NextFunction, Request, Response } from 'express'
 import { userService } from '../../services'
 
-const usernameValidator = async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
+const usernameUniquenessValidator = async (req: Request, _res: Response, next: NextFunction): Promise<void> => {
   const { username } = req.body
 
   const userFound = await userService.find(username)
@@ -14,4 +14,4 @@ const usernameValidator = async (req: Request, _res: Response, next: NextFunctio
   next()
 }
 
-export default usernameValidator
+export default usernameUniquenessValidator
