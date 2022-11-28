@@ -56,3 +56,10 @@ export const UnprocessableEntity = {
     message: 'Username already taken, please chose another'
   }
 }
+
+export const NotFound = {
+  projectNotFound: {
+    code: ClientError.NOT_FOUND,
+    message: 'The project was not found'
+  }
+}

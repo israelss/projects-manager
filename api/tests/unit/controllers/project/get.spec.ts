@@ -4,13 +4,14 @@ import { emptyHandler } from '../../mocks/middlewares'
 import { projectWithLocation } from '../../mocks/project'
 import { projectService } from '../../../../src/services'
 import { projectValidation } from '../../../../src/middlewares'
-import { Success } from '../../../../src/enums/http_status_codes'
+import { ClientError, Success } from '../../../../src/enums/http_status_codes'
 
 // Any handler mock implementation must be before the import of app,
 // otherwise the handler real implementation is used instead of the mocked one
 vi.spyOn(projectValidation, 'id').mockImplementation(emptyHandler)
 
 import app from '../../../../src/app' // eslint-disable-line import/first
+import { NotFound } from '../../../../src/utils/customError'
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -32,6 +33,16 @@ describe('Project', () => {
           .then(async (response) => {
             const serializedProject = JSON.parse(JSON.stringify(projectWithLocation))
             expect(response.body).toStrictEqual(serializedProject)
+          })
+      })
+      test('should return a message when project is not found', async () => {
+        vi.spyOn(projectService, 'get')
+          .mockResolvedValue(null)
+        await request(app)
+          .get('/project/:id')
+          .expect(ClientError.NOT_FOUND)
+          .then(async (response) => {
+            expect(response.body.message).toStrictEqual(NotFound.projectNotFound.message)
           })
       })
     })

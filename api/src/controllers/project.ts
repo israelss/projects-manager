@@ -1,6 +1,7 @@
 import { Response, Request, NextFunction } from 'express'
 import { Success } from '../enums/http_status_codes'
 import { projectService } from '../services'
+import CustomError, { NotFound } from '../utils/customError'
 
 export const create = async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
   const project = req.body
@@ -9,9 +10,10 @@ export const create = async (req: Request, res: Response, _next: NextFunction): 
   res.status(Success.CREATED).json(createdProject)
 }
 
-export const get = async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
+export const get = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const { id } = req.params
   const project = await projectService.get(id)
+  if (project === null) return next(new CustomError(NotFound.projectNotFound))
   res.status(Success.OK).json(project)
 }
 
