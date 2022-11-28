@@ -6,7 +6,7 @@ interface LoginInput {
   password: string
 }
 
-export const create = async (user: User): Promise<string> => {
+export const create = async (user: Omit<User, 'id'>): Promise<string> => {
   const { username } = await db.user.create({
     data: user
   })
