@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
-const ProjectDetails = (): JSX.Element => {
+interface ProjectDetailsProps extends PropsWithChildren {
+  id: string
+}
+
+const ProjectDetails = ({ id }: ProjectDetailsProps): JSX.Element => {
   return (
     <div>ProjectDetails</div>
   )
