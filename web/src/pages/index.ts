@@ -1,15 +1,15 @@
 import AddProject from './Project/AddProject'
-import Login from './User/LoginUser'
+import LoginUser from './User/LoginUser'
 import NotFound from './NotFound'
-import Project from './Project/ProjectDetails'
-import ProjectsList from './Project/Projects'
-import Register from './User/RegisterUser'
+import ProjectDetails from './Project/ProjectDetails'
+import Projects from './Project/Projects'
+import RegisterUser from './User/RegisterUser'
 
 export {
   AddProject,
-  Login,
+  LoginUser,
   NotFound,
-  Project,
-  ProjectsList,
-  Register
+  ProjectDetails,
+  Projects,
+  RegisterUser
 }
