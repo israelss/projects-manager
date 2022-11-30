@@ -1,23 +1,40 @@
 import { PropsWithChildren } from 'react'
-import { KeyedMutator } from 'swr/dist/types'
 
-export interface Project {
+export interface ProjectData {
   location: string
   id: string
   title: string
   cost: number
   done: boolean
-  deadline: Date
+  deadline: string
   username: string
-  created_at: Date
-  updated_at: Date
+  created_at: string
+  updated_at: string
 }
 
-export interface ProjectFetcherReturn {
-  projects: Project[]
+export interface AllProjectsData {
+  projects: ProjectData[]
 }
 
-export interface ProjectItemProps extends PropsWithChildren {
-  project: Project
-  updateFunction: KeyedMutator<ProjectFetcherReturn>
+export interface ProjectProps extends PropsWithChildren {
+  project: ProjectData
+}
+
+export interface ProjectSummaryProps extends PropsWithChildren {
+  data: {
+    id: string
+    deadline: string
+    title: string
+  }
+}
+
+export interface ProjectRequestArgs {
+  url: string
+  method: string
+  username: string
+}
+
+export interface ProjectRequestResult {
+  ok: boolean
+  message?: string
 }

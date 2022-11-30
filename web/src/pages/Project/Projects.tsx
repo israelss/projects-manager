@@ -1,32 +1,16 @@
 import React from 'react'
 import useSWR from 'swr'
-import ProjectItem from '../../components/ProjectItem'
+import ProjectSummary from '../../components/ProjectSummary'
 import { useRequireAuth } from '../../hooks/useRequireAuth'
 import { CustomError } from '../../interfaces/error'
-import { ProjectFetcherReturn } from '../../interfaces/project'
-
-const projectsFetcher = async (url: string, username: string): Promise<ProjectFetcherReturn> => {
-  const headersList = { username }
-
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: headersList
-  })
-
-  if (!res.ok) {
-    const error = new Error('An error occurred while fetching the data.') as CustomError
-    error.info = await res.json()
-    error.status = res.status
-    throw error
-  }
-
-  return await res.json()
-}
+import { AllProjectsData } from '../../interfaces/project'
+import { projectsFetcher, sortProjectsByDeadline } from '../../utils/project'
+import { API_URLS } from '../../utils/urls'
 
 const Projects = (): JSX.Element => {
   const { username, logout } = useRequireAuth()
-  const { data, error, mutate } = useSWR<ProjectFetcherReturn, CustomError>(
-    ['http://localhost:3001/projects', username],
+  const { data, error } = useSWR<AllProjectsData, CustomError>(
+    [API_URLS.GET_ALL, username],
     projectsFetcher
   )
 
@@ -41,8 +25,13 @@ const Projects = (): JSX.Element => {
       {
         data
           .projects
-          .sort((projectA, projectB) => new Date(projectA.deadline).valueOf() - new Date(projectB.deadline).valueOf())
-          .map((project) => <ProjectItem project={project} key={project.id} updateFunction={mutate} />)
+          .sort(sortProjectsByDeadline)
+          .map(({ id, deadline, title }) => (
+            <ProjectSummary
+              key={id}
+              data={{ id, deadline, title }}
+            />
+          ))
       }
     </div>
   )
