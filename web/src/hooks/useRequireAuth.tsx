@@ -2,18 +2,20 @@
 import { navigate, usePath } from 'raviger'
 import { useEffect } from 'react'
 import { AuthContext } from '../interfaces/auth'
+import { isUnloggedRoute, isValidUsername } from '../utils/auth'
+import { ROUTE_URLS } from '../utils/urls'
 import { useAuth } from './useAuth'
 
-export const useRequireAuth = (redirectUrl = '/login'): AuthContext => {
+export const useRequireAuth = (): AuthContext => {
   const auth = useAuth()
   const path = usePath() ?? ''
 
   useEffect(() => {
-    if (auth.username === false && !['/login', '/register'].includes(path)) {
-      navigate(redirectUrl)
+    if (auth.username === false && !isUnloggedRoute(path)) {
+      navigate(ROUTE_URLS.LOGIN)
     }
-    if (auth.username !== false && auth.username !== null && ['/login', '/register'].includes(path)) {
-      navigate('/projects')
+    if (isValidUsername(auth.username) && isUnloggedRoute(path)) {
+      navigate(ROUTE_URLS.ALL_PROJECTS)
     }
   }, [auth])
 
