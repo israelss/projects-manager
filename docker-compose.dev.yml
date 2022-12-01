@@ -1,0 +1,56 @@
+version: '3.9'
+services:
+  frontend:
+    build:
+      context: ./web
+      target: development
+    image: pm_frontend
+    container_name: 'pm_frontend'
+    depends_on:
+      backend:
+        condition: service_healthy
+    volumes:
+      - ./web/src:/app/src
+    healthcheck:
+      test: 'nc -z localhost 3000'
+  nginx:
+    build:
+      context: ./nginx
+    container_name: 'pm_nginx'
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "4000:4000"
+    depends_on:
+      backend:
+        condition: service_healthy
+      frontend:
+        condition: service_healthy
+  backend:
+    build:
+      context: ./api
+      target: development
+    image: pm_backend
+    container_name: 'pm_backend'
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - './api/.env'
+    volumes:
+      - ./api/src:/app/src
+    healthcheck:
+      test: 'nc -z localhost 3001'
+  db:
+    image: postgres:15.1-alpine3.16
+    container_name: 'pm_db'
+    env_file:
+      - './.env'
+    ports:
+      - "3002:5432"
+    volumes:
+      - pm-data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -q | echo $? || exit 1
+volumes:
+  pm-data:

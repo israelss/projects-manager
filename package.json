@@ -1,0 +1,21 @@
+{
+  "name": "projects-manager",
+  "version": "1.0.0",
+  "description": "Essa é uma aplicação para gerenciar projetos. É permitida a criação de usuários, bem como fazer o CRUD de projects para cada usuário.",
+  "scripts": {
+    "compose:up:dev": "docker compose -f docker-compose.dev.yml up -d --build",
+    "compose:down:dev": "docker compose -f docker-compose.dev.yml down --remove-orphans",
+    "compose:up": "docker compose up -d --build",
+    "compose:down": "docker compose down --remove-orphans"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/israelss/projects-manager.git"
+  },
+  "author": "Israel Sant'Anna @israelss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/israelss/projects-manager/issues"
+  },
+  "homepage": "https://github.com/israelss/projects-manager#readme"
+}

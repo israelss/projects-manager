@@ -7,7 +7,7 @@
     "clean": "rm -rf ./dist/* ",
     "prebuild": "npm run lint:fix",
     "build": "tsc && vite build",
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "preview": "vite preview --host 0.0.0.0",
     "lint": "ts-standard",
     "lint:fix": "ts-standard --fix"
