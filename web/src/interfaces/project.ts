@@ -32,9 +32,28 @@ export interface ProjectRequestArgs {
   url: string
   method: string
   username: string
+  data?: ProjectInput
 }
 
 export interface ProjectRequestResult {
   ok: boolean
   message?: string
+}
+
+export interface ProjectInput {
+  cost: number
+  deadline: Date
+  title: string
+  zip_code: number
+}
+
+export interface ProjectFormProps extends PropsWithChildren {
+  isEditForm?: boolean
+  data?: {
+    id: string
+    cost: number
+    deadline: string
+    title: string
+  }
+  update: () => Promise<void>
 }
