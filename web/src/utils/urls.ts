@@ -15,7 +15,6 @@ export const ROUTE_URLS = {
   LOGIN: '/login',
   REGISTER: '/register',
   ALL_PROJECTS: '/projects',
-  NEW_PROJECT: '/projects/new',
   PROJECT_STATIC: '/projects/:id',
   PROJECT: (id: string) => `/projects/${id}`
 } as const

@@ -1,13 +1,12 @@
 import { useRedirect, useRoutes } from 'raviger'
 import { useRequireAuth } from './hooks/useRequireAuth'
-import { AddProject, LoginUser, NotFound, ProjectDetails, Projects, RegisterUser } from './pages'
+import { LoginUser, NotFound, ProjectDetails, Projects, RegisterUser } from './pages'
 import { ROUTE_URLS } from './utils/urls'
 
 const routes = {
   [ROUTE_URLS.LOGIN]: () => <LoginUser />,
   [ROUTE_URLS.REGISTER]: () => <RegisterUser />,
   [ROUTE_URLS.ALL_PROJECTS]: () => <Projects />,
-  [ROUTE_URLS.NEW_PROJECT]: () => <AddProject />,
   [ROUTE_URLS.PROJECT_STATIC]: ({ id }: { id: string }) => <ProjectDetails id={id} />
 }
 
