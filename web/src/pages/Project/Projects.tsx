@@ -1,18 +1,26 @@
-import React from 'react'
-import useSWR from 'swr'
+import useSWR, { useSWRConfig } from 'swr'
+import ProjectForm from '../../components/ProjectForm'
 import ProjectSummary from '../../components/ProjectSummary'
 import { useRequireAuth } from '../../hooks/useRequireAuth'
+import { useToggleForm } from '../../hooks/useToggleForm'
 import { CustomError } from '../../interfaces/error'
 import { AllProjectsData } from '../../interfaces/project'
 import { projectsFetcher, sortProjectsByDeadline } from '../../utils/project'
 import { API_URLS } from '../../utils/urls'
 
 const Projects = (): JSX.Element => {
+  const [isFormShown, toggleForm] = useToggleForm()
   const { username, logout } = useRequireAuth()
   const { data, error } = useSWR<AllProjectsData, CustomError>(
     [API_URLS.GET_ALL, username],
     projectsFetcher
   )
+  const { mutate } = useSWRConfig()
+
+  const update = async (): Promise<void> => {
+    if (isFormShown) toggleForm()
+    await mutate<AllProjectsData>([API_URLS.GET_ALL, username])
+  }
 
   if (error != null) return <div>Erro ao carregar projetos do usuário {username}</div>
 
@@ -21,6 +29,12 @@ const Projects = (): JSX.Element => {
   return (
     <div>
       <button onClick={logout}>Sair</button>
+      <button onClick={toggleForm}>
+        {isFormShown ? 'Cancelar adição' : 'Adicionar Projeto'}
+      </button>
+      {
+        isFormShown && <ProjectForm update={update} />
+      }
       <h2>Projects</h2>
       {
         data
