@@ -5,12 +5,13 @@ import { useRequireAuth } from '../../hooks/useRequireAuth'
 import { useToggleForm } from '../../hooks/useToggleForm'
 import { CustomError } from '../../interfaces/error'
 import { AllProjectsData } from '../../interfaces/project'
+import BaseLayout from '../../layouts/BaseLayout'
 import { projectsFetcher, sortProjectsByDeadline } from '../../utils/project'
 import { API_URLS } from '../../utils/urls'
 
 const Projects = (): JSX.Element => {
   const [isFormShown, toggleForm] = useToggleForm()
-  const { username, logout } = useRequireAuth()
+  const { username } = useRequireAuth()
   const { data, error } = useSWR<AllProjectsData, CustomError>(
     [API_URLS.GET_ALL, username],
     projectsFetcher
@@ -27,8 +28,7 @@ const Projects = (): JSX.Element => {
   if (data == null) return <div>Carregando projetos do usuário {username}...</div>
 
   return (
-    <div>
-      <button onClick={logout}>Sair</button>
+    <BaseLayout>
       <button onClick={toggleForm}>
         {isFormShown ? 'Cancelar adição' : 'Adicionar Projeto'}
       </button>
@@ -47,7 +47,7 @@ const Projects = (): JSX.Element => {
             />
           ))
       }
-    </div>
+    </BaseLayout>
   )
 }
 
