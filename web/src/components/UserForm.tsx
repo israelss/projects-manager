@@ -6,7 +6,6 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useRequireAuth } from '../hooks/useRequireAuth'
 import { UserFormProps, UserInput } from '../interfaces/user'
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
 import toast from 'react-hot-toast'
 
 const UserForm = ({ successMessage, errorMessage, loadingMessage, variant }: UserFormProps): JSX.Element => {
@@ -38,21 +37,28 @@ const UserForm = ({ successMessage, errorMessage, loadingMessage, variant }: Use
       {
         variant === 'register'
           ? (
-            <>
-              <input {...register('name')} />
+            <label htmlFor='name'>
+              <div>Nome</div>
+              <input {...register('name')} id='name' />
               <p>{errors.name?.message}</p>
-            </>
+            </label>
             )
           : null
       }
 
-      <input {...register('username')} />
-      <p>{errors.username?.message}</p>
+      <label htmlFor="username">
+        <div>Nome de usuário</div>
+        <input {...register('username')} id="username" />
+        <p>{errors.username?.message}</p>
+      </label>
 
-      <input type='password' {...register('password')} />
-      <p>{errors.password?.message}</p>
+      <label htmlFor="password">
+        <div>Senha</div>
+        <input type='password' {...register('password')} id="password" />
+        <p>{errors.password?.message}</p>
+      </label>
 
-      <input type='submit' />
+      <input type='submit' value={variant === 'register' ? 'Cadastrar' : 'Entrar'} />
     </form>
   )
 }
