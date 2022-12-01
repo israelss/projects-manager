@@ -19,11 +19,16 @@ export const projectsFetcher = async <T,>(url: string, username: string): Promis
 export const sendRequest = async ({
   url,
   method,
-  username
+  username,
+  data
 }: ProjectRequestArgs): Promise<ProjectRequestResult> => {
-  const headers = { username }
+  const shouldSendBody = ['PUT', 'POST'].includes(method)
+  const headers: HeadersInit = { username }
+  if (shouldSendBody) headers['Content-Type'] = 'application/json'
 
-  const res = await fetch(url, { method, headers })
+  const body = shouldSendBody ? JSON.stringify(data) : null
+
+  const res = await fetch(url, { method, headers, body })
 
   if (!res.ok) {
     const { message } = await res.json()
