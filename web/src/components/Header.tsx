@@ -1,6 +1,6 @@
-import { useRequireAuth } from "../hooks/useRequireAuth"
+import { useRequireAuth } from '../hooks/useRequireAuth'
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const { logout, username } = useRequireAuth()
   return (
     <header>
