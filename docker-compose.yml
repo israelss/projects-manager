@@ -1,5 +1,18 @@
 version: '3.9'
 services:
+  frontend:
+    build:
+      context: ./web
+      target: production
+    image: pm_frontend
+    container_name: 'pm_frontend'
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3000:4173"
+    healthcheck:
+      test: 'nc -z localhost 4173'
   backend:
     build:
       context: ./api
