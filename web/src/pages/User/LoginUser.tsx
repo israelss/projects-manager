@@ -3,8 +3,8 @@ import UserForm from '../../components/UserForm'
 
 const LoginUser = (): JSX.Element => {
   return (
-    <div>
-      <h2>LoginUser</h2>
+    <div className='flex flex-col gap-6 justify-center w-min mx-auto h-full'>
+      <h2 className='text-4xl text-center'>Login</h2>
       <UserForm
         variant='login'
         successMessage='Login realizado com sucesso'
