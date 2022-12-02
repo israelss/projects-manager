@@ -1,0 +1,43 @@
+{
+  "name": "pm_api",
+  "version": "0.0.0",
+  "description": "Server for 'Projects Manager'",
+  "scripts": {
+    "db:deploy": "prisma generate && prisma migrate deploy",
+    "db:migrate:dev": "prisma migrate dev",
+    "clean": "rm -rf ./build/* ",
+    "build": "tsc --project tsconfig.build.json",
+    "predev": "npm run db:migrate:dev",
+    "dev": "tsnd --watch src src/server.ts",
+    "prestart": "npm run db:deploy",
+    "start": "node build/server.js",
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "author": "Israel Sant'Anna @israelss",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.6.1",
+    "axios": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "zod": "^3.19.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.9",
+    "@types/supertest": "^2.0.12",
+    "@vitest/coverage-c8": "^0.25.3",
+    "prisma": "^4.6.1",
+    "supertest": "^6.3.1",
+    "ts-node-dev": "^2.0.0",
+    "ts-standard": "^12.0.1",
+    "typescript": "^4.9.3",
+    "vitest": "^0.25.3",
+    "vitest-mock-extended": "^1.0.7"
+  }
+}
