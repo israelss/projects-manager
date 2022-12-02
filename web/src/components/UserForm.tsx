@@ -46,15 +46,15 @@ const UserForm = ({ successMessage, errorMessage, loadingMessage, variant }: Use
           : null
       }
 
-      <label htmlFor="username">
+      <label htmlFor='username'>
         <div>Nome de usuário</div>
-        <input {...register('username')} id="username" />
+        <input {...register('username')} id='username' />
         <p>{errors.username?.message}</p>
       </label>
 
-      <label htmlFor="password">
+      <label htmlFor='password'>
         <div>Senha</div>
-        <input type='password' {...register('password')} id="password" />
+        <input type='password' {...register('password')} id='password' />
         <p>{errors.password?.message}</p>
       </label>
 
