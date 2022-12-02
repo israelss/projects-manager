@@ -18,7 +18,7 @@ const App = (): JSX.Element => {
   if (auth.username === null) return <div>Carregando...</div>
 
   return (
-    <div className='App'>
+    <div className='w-screen h-screen'>
       {route ?? <NotFound />}
     </div>
   )
