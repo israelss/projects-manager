@@ -68,13 +68,13 @@ Para o backend, desenvolvi a API utilizando [Node.js](https://nodejs.org/pt-br/)
 
 ---
 
-> ### PUT /projects/:id/done
+> ### PATCH /projects/:id/done
 >
 >> Marca um projeto como concluído
 
 ---
 
-> ### PATCH /projects/:id
+> ### PUT /projects/:id
 >
 >> Altera as informações de um projeto
 
@@ -83,6 +83,7 @@ Para o backend, desenvolvi a API utilizando [Node.js](https://nodejs.org/pt-br/)
 > ### DELETE /projects/:id
 >
 >> Exclui um projeto
+
 ## 🧰 Tecnologias e ferramentas
 
 Para este projeto foram utilizados:
