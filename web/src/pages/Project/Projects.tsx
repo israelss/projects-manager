@@ -29,26 +29,33 @@ const Projects = (): JSX.Element => {
 
   return (
     <BaseLayout>
-      <button onClick={toggleForm}>
-        {isFormShown ? 'Cancelar adição' : 'Adicionar Projeto'}
-      </button>
+      <div className="flex items-center">
+        <h2 className='text-3xl flex-1'>Projetos</h2>
+        <button
+          className={`btn btn-sm ${isFormShown ? 'btn-warning' : 'btn-accent'}`}
+          onClick={toggleForm}
+        >
+          {isFormShown ? 'Cancelar adição' : 'Adicionar Projeto'}
+        </button>
+      </div>
       {
         isFormShown && <ProjectForm update={update} />
       }
-      <h2>Projects</h2>
-      {
-        data
-          .projects
-          .sort(sortProjectsByDeadline)
-          .map(({ id, deadline, title }) => (
-            <ProjectSummary
-              key={id}
-              data={{ id, deadline, title }}
-            />
-          ))
-      }
+      <div className="divide-y-2">
+        {
+          data
+            .projects
+            .sort(sortProjectsByDeadline)
+            .map(({ id, deadline, title }) => (
+              <ProjectSummary
+                key={id}
+                data={{ id, deadline, title }}
+              />
+            ))
+        }
+      </div>
     </BaseLayout>
-  )
+  );
 }
 
 export default Projects
