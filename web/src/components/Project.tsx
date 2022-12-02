@@ -47,33 +47,44 @@ const Project = ({ project }: ProjectProps): JSX.Element => {
   }
 
   return (
-    <div>
-      <div>
-        <button onClick={() => navigate('..')}>Voltar</button>
-        <div>
-          <span>Custo: {project.cost}</span>
-          <span>Prazo: {new Date(project.deadline).toLocaleDateString()}</span>
-          <span>Localização: {project.location}</span>
+    <div className='flex flex-col gap-2'>
+      <div className='flex gap-2 items-start'>
+        <div className='flex-1 grid grid-flow-row gap-2'>
+          <div className='flex gap-2 divide-x-2'>
+            <span>Custo: {project.cost}</span>
+            <span className='px-2'>Prazo: {new Date(project.deadline).toLocaleDateString()}</span>
+            <span className='px-2'>Localização: {project.location}</span>
+          </div>
+          <div className='flex gap-2 items-center'>
+            <span className={`badge ${project.done ? 'badge-success' : 'badge-warning'}`}>
+              {project.done ? 'Concluído' : 'Não Concluído'}
+            </span>
+          </div>
         </div>
-        <div>
-          Concluído: {project.done ? 'Sim' : 'Não'}
+        <div className='grid grid-rows-3 gap-1'>
+          {!project.done && (
+            <>
+              <button
+                className='btn btn-xs btn-secondary'
+                onClick={markAsDone} // eslint-disable-line @typescript-eslint/no-misused-promises
+              >
+                Marcar como concluído
+              </button>
+              <button
+                className={`btn btn-xs ${isFormShown ? 'btn-warning' : 'btn-accent'}`}
+                onClick={toggleForm}
+                >
+                {isFormShown ? 'Cancelar edição' : 'Editar'}
+              </button>
+            </>
+          )}
           <button
-            disabled={project.done}
-            onClick={markAsDone} // eslint-disable-line @typescript-eslint/no-misused-promises
+            className='btn btn-xs btn-error'
+            onClick={removeProject} // eslint-disable-line @typescript-eslint/no-misused-promises
           >
-            {project.done ? 'Projeto já concluído' : 'Marcar como concluído'}
+            Excluir
           </button>
         </div>
-      </div>
-      <div>
-        <button onClick={toggleForm}>
-          {isFormShown ? 'Cancelar edição' : 'Editar'}
-        </button>
-        <button
-          onClick={removeProject} // eslint-disable-line @typescript-eslint/no-misused-promises
-        >
-          Excluir
-        </button>
       </div>
       {
         isFormShown && <ProjectForm isEditForm data={{ ...project }} update={update} />

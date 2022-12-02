@@ -1,3 +1,4 @@
+import { navigate } from 'raviger'
 import { PropsWithChildren } from 'react'
 import useSWR from 'swr'
 import Project from '../../components/Project'
@@ -25,7 +26,15 @@ const ProjectDetails = ({ id }: ProjectDetailsProps): JSX.Element => {
 
   return (
     <BaseLayout>
-      <h2>Detalhes do projeto: {data.title}</h2>
+      <div className="flex items-center">
+        <h2 className='text-3xl flex-1'>Detalhes do projeto: {data.title}</h2>
+        <button
+          className={'btn btn-xs btn-info'}
+          onClick={() => navigate('..')}
+        >
+            Voltar
+        </button>
+      </div>
       <Project project={data} />
     </BaseLayout>
   )

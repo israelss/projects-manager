@@ -11,6 +11,8 @@ ENV NODE_ENV=development
 WORKDIR /app
 COPY --from=base ./app/src ./src
 COPY --from=base ./app/package*.json ./
+COPY --from=base ./app/postcss.config.cjs ./
+COPY --from=base ./app/tailwind.config.cjs ./
 COPY --from=base ./app/tsconfig*.json ./
 COPY --from=base ./app/vite.config.ts ./
 COPY --from=base ./app/index.html ./

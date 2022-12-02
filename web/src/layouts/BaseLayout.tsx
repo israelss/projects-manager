@@ -3,9 +3,11 @@ import Header from '../components/Header'
 
 const BaseLayout = ({ children }: PropsWithChildren): JSX.Element => {
   return (
-    <div>
+    <div className='flex flex-col gap-3'>
       <Header />
-      {children}
+      <div className="px-4 flex flex-col gap-3">
+        {children}
+      </div>
     </div>
   )
 }
