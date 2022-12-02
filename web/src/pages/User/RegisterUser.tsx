@@ -3,8 +3,8 @@ import UserForm from '../../components/UserForm'
 
 const RegisterUser = (): JSX.Element => {
   return (
-    <div>
-      <h2>RegisterUser</h2>
+    <div className='flex flex-col gap-6 justify-center w-min mx-auto h-full'>
+      <h2 className='text-4xl text-center'>Cadastrar</h2>
       <UserForm
         variant='register'
         successMessage='Cadastro realizado com sucesso'
