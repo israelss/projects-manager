@@ -15,10 +15,16 @@ const App = (): JSX.Element => {
   const auth = useRequireAuth()
   const route = useRoutes(routes)
 
-  if (auth.username === null) return <div>Carregando...</div>
+  if (auth.username === null) return (
+    <div className='w-screen h-screen'>
+      <div className="flex justify-center items-center h-full">
+        <h1 className='text-4xl'>Carregando...</h1>
+      </div>
+    </div>
+  )
 
   return (
-    <div className='App'>
+    <div className='w-screen h-screen'>
       {route ?? <NotFound />}
     </div>
   )
