@@ -12,7 +12,8 @@ const UserForm = ({ successMessage, errorMessage, loadingMessage, variant }: Use
   const [, setStoredUsername] = useLocalStorage<string>('username')
   const { login, register: signup } = useRequireAuth()
 
-  const { register, handleSubmit, formState: { errors } } = useForm<UserInput>({
+  const { register, handleSubmit, formState: { errors, isValid } } = useForm<UserInput>({
+    mode: 'onTouched',
     resolver: zodResolver(variant === 'login' ? loginSchema : registerSchema)
   })
 
@@ -33,32 +34,62 @@ const UserForm = ({ successMessage, errorMessage, loadingMessage, variant }: Use
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}> {/* eslint-disable-line @typescript-eslint/no-misused-promises */}
+    <form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}> {/* eslint-disable-line @typescript-eslint/no-misused-promises */}
       {
         variant === 'register'
           ? (
-            <label htmlFor='name'>
-              <div>Nome</div>
-              <input {...register('name')} id='name' />
-              <p>{errors.name?.message}</p>
-            </label>
+            <div className='form-control'>
+              <label className='label' htmlFor='name'>
+                <span className={`label-text ${(errors.name != null) ? 'text-error' : ''}`}>Nome</span>
+              </label>
+              <input
+                className={`input input-bordered ${(errors.name != null) ? 'input-error' : ''}`}
+                type='text'
+                id='name'
+                {...register('name')}
+              />
+              <div className='block text-error text-[0.6rem] h-0.5'>
+                {errors.name?.message}
+              </div>
+            </div>
             )
           : null
       }
 
-      <label htmlFor='username'>
-        <div>Nome de usuário</div>
-        <input {...register('username')} id='username' />
-        <p>{errors.username?.message}</p>
-      </label>
+      <div className='form-control'>
+        <label className='label' htmlFor='username'>
+          <span className={`label-text ${(errors.username != null) ? 'text-error' : ''}`}>Nome de usuário</span>
+        </label>
+        <input
+          className={`input input-bordered ${(errors.username != null) ? 'input-error' : ''}`}
+          type='text'
+          id='username'
+          {...register('username')}
+        />
+        <div className='block text-error text-[0.6rem] h-0.5'>
+          {errors.username?.message}
+        </div>
+      </div>
 
-      <label htmlFor='password'>
-        <div>Senha</div>
-        <input type='password' {...register('password')} id='password' />
-        <p>{errors.password?.message}</p>
-      </label>
+      <div className='form-control'>
+        <label className='label' htmlFor='password'>
+          <span className={`label-text ${(errors.password != null) ? 'text-error' : ''}`}>Senha</span>
+        </label>
+        <input
+          className={`input input-bordered ${(errors.password != null) ? 'input-error' : ''}`}
+          type='password'
+          id='password'
+          {...register('password')}
+        />
+        <div className='block text-error text-[0.6rem] h-0.5'>{errors.password?.message}</div>
+      </div>
 
-      <input type='submit' value={variant === 'register' ? 'Cadastrar' : 'Entrar'} />
+      <input
+        disabled={!isValid}
+        className='btn btn-success mt-4'
+        type='submit'
+        value={variant === 'register' ? 'Cadastrar' : 'Entrar'}
+      />
     </form>
   )
 }

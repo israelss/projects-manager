@@ -6,14 +6,12 @@ const router = Router()
 
 router.get(
   '/',
-  projectValidation.username,
   projectController.getAll as RequestHandler
 )
 
 router.patch(
   '/:id/done',
   projectValidation.id,
-  projectValidation.username,
   projectValidation.ownership as RequestHandler,
   projectController.markAsDone as RequestHandler
 )
@@ -21,7 +19,6 @@ router.patch(
 router.delete(
   '/:id',
   projectValidation.id,
-  projectValidation.username,
   projectValidation.ownership as RequestHandler,
   projectController.remove as RequestHandler
 )
@@ -29,7 +26,6 @@ router.delete(
 router.put(
   '/:id',
   projectValidation.id,
-  projectValidation.username,
   projectValidation.cost,
   projectValidation.deadline,
   projectValidation.title,
