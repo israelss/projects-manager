@@ -2,6 +2,9 @@
 
 Essa é uma aplicação para gerenciar projetos. É permitida a criação de usuários, bem como fazer o CRUD de projects para cada usuário.
 
+## Live Preview
+- [Google Cloud Run](https://projects-manager.israelss.dev/login)
+
 # 🧠 Contexto
 
 O desafio foi dividido em duas partes, backend e frontend.
