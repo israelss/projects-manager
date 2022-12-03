@@ -2,14 +2,7 @@ import { CustomError } from '../interfaces/error'
 import { ProjectData, ProjectRequestArgs, ProjectRequestResult } from '../interfaces/project'
 
 export const projectsFetcher = async <T,>(url: string, username: string): Promise<T> => {
-  if (!!username === false) {
-    const error = new Error() as CustomError
-    error.info.message = 'Not authenticated'
-    error.status = 401
-    throw error
-  }
-
-  const headers = { username }
+  const headers = username ? { username } : undefined
 
   const res = await fetch(url, { method: 'GET', headers })
 
