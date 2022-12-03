@@ -29,6 +29,7 @@ describe('Project', () => {
           .mockResolvedValue(projectWithLocation)
         await request(app)
           .get('/project/:id')
+          .set({ username: 'user.one' })
           .expect(Success.OK)
           .then(async (response) => {
             const serializedProject = JSON.parse(JSON.stringify(projectWithLocation))
@@ -40,6 +41,7 @@ describe('Project', () => {
           .mockResolvedValue(null)
         await request(app)
           .get('/project/:id')
+          .set({ username: 'user.one' })
           .expect(ClientError.NOT_FOUND)
           .then(async (response) => {
             expect(response.body.message).toStrictEqual(NotFound.projectNotFound.message)
