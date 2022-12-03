@@ -29,10 +29,6 @@ export const BadRequest = {
     code: ClientError.BAD_REQUEST,
     message: 'Deadline must be a valid DateTime value'
   },
-  headerInvalid: {
-    code: ClientError.BAD_REQUEST,
-    message: 'Username must be provided on header'
-  },
   idInvalid: {
     code: ClientError.BAD_REQUEST,
     message: 'Id should be a valid UUID'
@@ -61,5 +57,12 @@ export const NotFound = {
   projectNotFound: {
     code: ClientError.NOT_FOUND,
     message: 'The project was not found'
+  }
+}
+
+export const NotAcceptable = {
+  headerInvalid: {
+    code: ClientError.NOT_ACCEPTABLE,
+    message: 'Username must be provided on header'
   }
 }
