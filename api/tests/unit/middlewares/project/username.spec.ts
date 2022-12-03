@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { afterEach, describe, expect, test, vi } from 'vitest'
 import usernameValidator from '../../../../src/middlewares/project/username'
-import CustomError, { BadRequest } from '../../../../src/utils/customError'
+import CustomError, { NotAcceptable } from '../../../../src/utils/customError'
 
 afterEach(() => {
   vi.clearAllMocks()
@@ -34,7 +34,7 @@ describe('User', () => {
 
         usernameValidator(req, res, next)
 
-        expect(next).toBeCalledWith(new CustomError(BadRequest.headerInvalid))
+        expect(next).toBeCalledWith(new CustomError(NotAcceptable.headerInvalid))
       })
     })
   })

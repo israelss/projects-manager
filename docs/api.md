@@ -1,7 +1,7 @@
-> ### POST /users
->
->> Cria um novo usuário
->
+## POST /users
+
+Cria um novo usuário
+
 > Deve receber _name_, _username_ e _password_ via corpo da requisição:
 > ```json
 > {
@@ -44,10 +44,10 @@
 >> }
 >> ```
 
-> ### POST /users/login
->
->> Autentica um usuário existente
->
+## POST /users/login
+
+Autentica um usuário existente
+
 > Deve receber _username_ e _password_ via corpo da requisição:
 > ```json
 > {
@@ -89,10 +89,10 @@
 >> }
 >> ```
 
-> ### POST /project
->
->> Cria um novo projeto
->
+## POST /project
+
+Cria um novo projeto
+
 > Deve receber _cost_, _deadline_, _title_ e _zip_code_ via corpo da requisição:
 > ```json
 > {
@@ -138,11 +138,22 @@
 >>   "message": "Mensagem de erro"
 >> }
 >> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
 
-> ### GET /project/:id
->
->> Busca um projeto pelo _id_
->
+## GET /project/:id
+
+Busca um projeto pelo _id_
+
 > Deve receber _id_ como parâmetro na rota
 >
 > Deve receber _username_ via header da requisição:
@@ -192,11 +203,22 @@
 >>   "message": "Mensagem de erro"
 >> }
 >> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
 
-> ### GET /projects
->
->> Busca todos os projetos
->
+## GET /projects
+
+Busca todos os projetos
+
 > Deve receber _username_ via header da requisição:
 > ```json
 > {
@@ -248,11 +270,22 @@
 >>   "message": "Mensagem de erro"
 >> }
 >> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
 
-> ### PATCH /projects/:id/done
->
->> Marca um projeto como concluído
->
+## PATCH /projects/:id/done
+
+Marca um projeto como concluído
+
 > Deve receber _id_ como parâmetro na rota
 >
 > Deve receber _username_ via header da requisição:
@@ -302,11 +335,22 @@
 >>   "message": "Mensagem de erro"
 >> }
 >> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
 
-> ### PUT /project/:id
->
->> Altera as informações de um projeto
->
+## PUT /project/:id
+
+Altera as informações de um projeto
+
 > Deve receber _id_ como parâmetro na rota
 >
 > Deve receber _cost_, _deadline_, _title_ e _zip_code_ via corpo da requisição:
@@ -365,11 +409,22 @@
 >>   "message": "Mensagem de erro"
 >> }
 >> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
 
-> ### DELETE /project/:id
->
->> Exclui um projeto
->
+## DELETE /project/:id
+
+Exclui um projeto
+
 > Deve receber _id_ como parâmetro na rota
 >
 > Deve receber _username_ via header da requisição:
@@ -399,6 +454,17 @@
 >
 > Retorno (erro: o projeto não é do usuário):
 >> - Status 403 Forbidden
+>>
+>> ```json
+>> {
+>>   "message": "Mensagem de erro"
+>> }
+>> ```
+>
+> ---
+>
+> Retorno (erro: sem _username_ no header):
+>> - Status 406 Not Acceptable
 >>
 >> ```json
 >> {

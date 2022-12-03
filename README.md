@@ -132,6 +132,17 @@ POSTGRES_PASSWORD=ExamplePassword
 PORT=3001
 DATABASE_URL="postgresql://postgres:ExamplePassword@db:5432/dbname?schema=public"
 ```
+⚠️ _Algumas observações sobre a variável `DATABASE_URL`:_
+
+_0: Essa variável é necessária por causa do Prisma. Para detalhes de como configurar a conexão com o PostgreSQL via Prisma, [acesse a documentação neste link](https://www.prisma.io/docs/concepts/database-connectors/postgresql)._
+
+_1: `postgres` é o nome de usuário padrão da imagem docker do PostgreSQL utilizada neste projeto. Se for utilizar outa imagem, ou outra instância do PostgreSQL, altere de acordo._
+
+_2: `ExamplePassword` é a mesma senha definida na variável `POSTGRES_PASSWORD` no arquivo `.env` da raiz do projeto._
+
+_3: `db` é o nome do serviço definido nos arquivos `docker-compose.yml` e `docker-compose.dev.yml`. Caso não queira utilizar o PostgreSQL definido nestes arquivos, troque `db` pelo endereço do HOST correspondente (EX: `localhost`)_
+
+_4: `5432` é a porta padrão exposta pela imagem docker do PostgreSQL utilizada neste projeto. Se for utilizar outa imagem, ou outra instância do PostgreSQL, altere de acordo, tomando cuidado para não escolher uma porta que já esteja em uso._
 
 # ⚙️ Rodando o projeto
 
