@@ -1,4 +1,4 @@
-import CustomError, { BadRequest } from '../../utils/customError'
+import CustomError, { NotAcceptable } from '../../utils/customError'
 import { NextFunction, Request, Response } from 'express'
 import { z } from 'zod'
 
@@ -12,7 +12,7 @@ const usernameValidator = (req: Request, _res: Response, next: NextFunction): vo
   const result = schema.safeParse({ username })
 
   if (!result.success) {
-    return next(new CustomError(BadRequest.headerInvalid))
+    return next(new CustomError(NotAcceptable.headerInvalid))
   }
 
   next()
