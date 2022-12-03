@@ -12,7 +12,7 @@ const RegisterUser = (): JSX.Element => {
         errorMessage='Um erro desconhecido ocorreu ao cadastrar, tente novamente'
         loadingMessage='Realizando cadastro...'
       />
-      <Link href="/login" className='link link-hover text-sm'>
+      <Link href='/login' className='link link-hover text-sm'>
         Já sou cadastrado
       </Link>
     </div>
