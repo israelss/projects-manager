@@ -57,7 +57,7 @@ const ProjectForm = ({ isEditForm = false, data, update }: ProjectFormProps): JS
             {errors.title?.message}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className='grid grid-cols-3 gap-2'>
           <div className='form-control'>
             <label className='label' htmlFor='zip_code'>
               <span className={`label-text ${(errors.zip_code != null) ? 'text-error' : ''}`}>CEP</span>

@@ -73,7 +73,7 @@ const Project = ({ project }: ProjectProps): JSX.Element => {
               <button
                 className={`btn btn-xs ${isFormShown ? 'btn-warning' : 'btn-accent'}`}
                 onClick={toggleForm}
-                >
+              >
                 {isFormShown ? 'Cancelar edição' : 'Editar'}
               </button>
             </>

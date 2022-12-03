@@ -12,7 +12,7 @@ const LoginUser = (): JSX.Element => {
         errorMessage='Um erro desconhecido ocorreu ao logar, tente novamente'
         loadingMessage='Realizando login...'
       />
-      <Link href="/register" className='link link-hover text-sm'>
+      <Link href='/register' className='link link-hover text-sm'>
         Não tenho cadastro ainda
       </Link>
     </div>

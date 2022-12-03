@@ -17,7 +17,7 @@ const ProjectSummary = ({ data }: ProjectSummaryProps): JSX.Element => {
         className='btn btn-info btn-xs'
         onClick={() => navigate(ROUTE_URLS.PROJECT(data.id))}
       >
-          Mais Detalhes
+        Mais Detalhes
       </button>
     </div>
   )

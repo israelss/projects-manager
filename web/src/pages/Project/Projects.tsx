@@ -29,7 +29,7 @@ const Projects = (): JSX.Element => {
 
   return (
     <BaseLayout>
-      <div className="flex items-center">
+      <div className='flex items-center'>
         <h2 className='text-3xl flex-1'>Projetos</h2>
         <button
           className={`btn btn-sm ${isFormShown ? 'btn-warning' : 'btn-accent'}`}
@@ -41,7 +41,7 @@ const Projects = (): JSX.Element => {
       {
         isFormShown && <ProjectForm update={update} />
       }
-      <div className="divide-y-2">
+      <div className='divide-y-2'>
         {
           data
             .projects
@@ -55,7 +55,7 @@ const Projects = (): JSX.Element => {
         }
       </div>
     </BaseLayout>
-  );
+  )
 }
 
 export default Projects
