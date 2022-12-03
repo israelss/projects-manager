@@ -11,7 +11,7 @@ router.post(
   projectValidation.title,
   projectValidation.zipCode,
   projectController.create as RequestHandler
-  )
+)
 
 router.get(
   '/:id',
