@@ -1,8 +1,8 @@
 import { CustomError } from '../interfaces/error'
 import { ProjectData, ProjectRequestArgs, ProjectRequestResult } from '../interfaces/project'
 
-export const projectsFetcher = async <T,>(url: string, username: string): Promise<T> => {
-  const headers = username ? { username } : undefined
+export const projectsFetcher = async <T,>(url: string, username: string | false): Promise<T> => {
+  const headers = username !== false ? { username } : undefined
 
   const res = await fetch(url, { method: 'GET', headers })
 
