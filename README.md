@@ -130,7 +130,7 @@ POSTGRES_PASSWORD=ExamplePassword
 ```sh
 #/api/.env
 PORT=3001
-DATABASE_URL="postgresql://user:password@localhost:5432/dbname?schema=public"
+DATABASE_URL="postgresql://postgres:ExamplePassword@db:5432/dbname?schema=public"
 ```
 
 # ⚙️ Rodando o projeto
